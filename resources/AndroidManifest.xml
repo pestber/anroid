@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="2"
+    android:versionName="2.0"
+    android:compileSdkVersion="32"
+    android:compileSdkVersionCodename="12"
+    package="com.android.grafobank"
+    platformBuildVersionCode="32"
+    platformBuildVersionName="12">
+    <uses-sdk
+        android:minSdkVersion="32"
+        android:targetSdkVersion="32"/>
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-feature
+        android:glEsVersion="0x20000"
+        android:required="true"/>
+    <application
+        android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:debuggable="true"
+        android:allowBackup="true"
+        android:extractNativeLibs="false">
+        <activity
+            android:label="@string/app_name"
+            android:name="com.android.grafobank.activity.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/title_activity_do_login"
+            android:name="com.android.grafobank.activity.DoLogin"/>
+        <activity
+            android:label="@string/title_activity_post_login"
+            android:name="com.android.grafobank.activity.PostLogin"
+            android:exported="true"/>
+        <activity
+            android:label="@string/title_activity_wrong_login"
+            android:name="com.android.grafobank.activity.WrongLogin"/>
+        <activity
+            android:label="@string/title_activity_do_transfer"
+            android:name="com.android.grafobank.activity.DoTransfer"
+            android:exported="true"/>
+        <activity
+            android:label="@string/title_activity_view_statement"
+            android:name="com.android.grafobank.activity.ViewStatement"
+            android:exported="true"/>
+        <provider
+            android:name="com.android.grafobank.activity.TrackUserContentProvider"
+            android:exported="true"
+            android:authorities="com.android.grafobank.activity.TrackUserContentProvider"/>
+        <receiver
+            android:name="com.android.grafobank.receiver.MyBroadCastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="theBroadcast"/>
+            </intent-filter>
+        </receiver>
+        <activity
+            android:label="@string/title_activity_change_password"
+            android:name="com.android.grafobank.activity.ChangePassword"
+            android:exported="true"/>
+        <activity
+            android:theme="@android:style/Theme.Translucent"
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="smallestScreenSize|screenSize|uiMode|screenLayout|orientation|keyboardHidden|keyboard"/>
+        <activity
+            android:theme="@style/Theme.IAPTheme"
+            android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"/>
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true"/>
+        <receiver
+            android:name="com.google.android.gms.wallet.EnableWalletOptimizationReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wallet.ENABLE_WALLET_OPTIMIZATION"/>
+            </intent-filter>
+        </receiver>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+    </application>
+</manifest>
